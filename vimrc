@@ -28,6 +28,17 @@ set hlsearch
 set nu
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+function HeaderPython()
+	call setline(1, "#!/usr/bin/env python")
+	call append(1, "# -*- coding: utf8 -*-")
+	call append(2, "# Power by viekie". strftime('%Y-%m-%d %T', localtime()))
+	normal G
+	normal o
+	normal 0
+endf
+
+autocmd bufnewfile *.py call HeaderPython()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
