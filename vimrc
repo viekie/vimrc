@@ -4,7 +4,7 @@ set fileencodings=ucs-bom,utf-8,chinese,cp936
 set guifont=Consolas:h15
 language messages zh_CN.utf-8
 syntax enable
-colorscheme monokai
+colorscheme molokai
 set lines=45 columns=100
 set autoindent
 set tabstop=4        " 设置制表符(tab键)的宽度
@@ -26,13 +26,14 @@ set ruler            " 标尺，用于显示光标位置的行号和列号，逗
 set incsearch        " 输入字符串就显示匹配点
 set hlsearch        
 set nu
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 function HeaderPython()
 	call setline(1, "#!/usr/bin/env python")
 	call append(1, "# -*- coding: utf8 -*-")
-	call append(2, "# Power by viekie". strftime('%Y-%m-%d %T', localtime()))
+	call append(2, "# Power by viekie")
+	call append(3, "# create time". strftime('%Y-%m-%d %T', localtime()))
 	normal G
 	normal o
 	normal 0
@@ -41,58 +42,59 @@ endf
 autocmd bufnewfile *.py call HeaderPython()
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 " My Bundles here:  /* 插件配置格式 */
 "   
 " original repos on github （Github网站上非vim-scripts仓库的插件，按下面格式填写）
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'tpope/vim-rails.git'
 " vim-scripts repos  （vim-scripts仓库里的，按下面格式填写）
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 " non github repos   (非上面两种情况的，按下面格式填写)
-Bundle 'git://git.wincent.com/command-t.git'
+Plugin 'git://git.wincent.com/command-t.git'
 
 " myself vim plugin installed by bundle
 " plugin for html
-Bundle 'othree/html5.vim'
+Plugin 'othree/html5.vim'
 " plugin for css
-Bundle 'skammer/vim-css-color'
+Plugin 'skammer/vim-css-color'
 " plugin for c/c++
-Bundle 'vim-scripts/c.vim'
+Plugin 'vim-scripts/c.vim'
 " plugin for c/c++ auto completion
-Bundle 'vim-scripts/OmniCppComplete'
+Plugin 'vim-scripts/OmniCppComplete'
 " plugin for java
-Bundle 'bpdp/vim-java'
+Plugin 'bpdp/vim-java'
 " plugin for javascript
-Bundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 " plugin for python
-Bundle 'klen/python-mode'
+Plugin 'klen/python-mode'
 " plugin for erlang
-Bundle 'oscarh/vimerl'
+Plugin 'oscarh/vimerl'
 " plugin for golang
 " Bundle 'fatih/vim-go'
 " plugin for php
-Bundle 'shawncplus/phpcomplete.vim'
+Plugin 'shawncplus/phpcomplete.vim'
 " plugin youcompleteme
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " plugin Doxygen
-Bundle 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 " plugin for shell
-Bundle 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimshell.vim'
 
 " IDE style
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'vim-scripts/winmanager'
-Bundle 'ervandew/supertab' 
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/winmanager'
+Plugin 'ervandew/supertab' 
 let g:DoxygenToolkit_authorName="viekiedu@gmail.com"
 let g:winManagerWindowLayout = "FileExplorer|TagList,BufExplorer"
 let g:AutoOpenWinManager = 1
 let g:winManagerWidth = 30
 nmap <silent> <F8> :WMToggle<cr>
 " ... 
+call vundle#end()
 filetype plugin indent on     " required!   /** vimrc文件配置结束 **/
 "/** vundle命令 **/
 " Brief help
